@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FrQSurvey.Views.SurveyDataPage"
+             xmlns:vm="clr-namespace:FrQSurvey.ViewModels"
+             Title="{Binding Title}"
+             Background="White">
+    
+    <ContentPage.BindingContext>
+        <vm:SurveyDataViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <StackLayout Spacing="3" 
+                     Padding="15">
+            <Label Text="Text" 
+                   TextColor="Black"
+                   FontSize="Medium" />
+            <Entry Text="{Binding Text, Mode=TwoWay}" 
+                   TextColor="Black"
+                   FontSize="Medium" />
+
+            <Label Text="Description" 
+                   TextColor="Black"
+                   FontSize="Medium" />
+            <Entry Text="{Binding Description, Mode=TwoWay}" 
+                   TextColor="Black"
+                   FontSize="Medium" />
+
+            <StackLayout Orientation="Horizontal"
+                         Margin="0,10,0,0">
+                <Button Text="Cancel" 
+                        HorizontalOptions="FillAndExpand"/>
+                <Button Text="Save" 
+                        HorizontalOptions="FillAndExpand"
+                        Command="{Binding SaveToDocCommand}"
+                        TextColor="White" />
+            </StackLayout>
+        </StackLayout>
+    </Grid>
+
+</ContentPage>
