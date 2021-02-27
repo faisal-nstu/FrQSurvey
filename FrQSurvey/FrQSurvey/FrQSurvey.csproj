@@ -7,9 +7,13 @@
 
   <ItemGroup>
     <None Remove="ViewModels\doc.html" />
+    <None Remove="ViewModels\template.html" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="ViewModels\template.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewModels\Doc.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
