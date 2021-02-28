@@ -77,6 +77,15 @@ namespace FrQSurvey.Models
             set => SetProperty(ref afterDepreciation, value);
         }
 
+        public Valuation()
+        {
+            Floor = "";
+            Area = "";
+            COnstructionYear = "";
+            Completed = "";
+            CompleteRate = "";
+            PresentRate = "";
+        }
         public Valuation(string floor, string area, string constructionYear, string completed, string completeRate, string presentRate)
         {
             Floor = floor;

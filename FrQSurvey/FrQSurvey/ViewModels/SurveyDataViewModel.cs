@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -348,16 +349,32 @@ namespace FrQSurvey.ViewModels
             set => SetProperty(ref valuations, value);
         }
 
+        private bool isProcessing;
+        public bool IsProcessing
+        {
+            get => isProcessing;
+            set => SetProperty(ref isProcessing, value);
+        }
+
         public SurveyDataViewModel()
         {
+            IsProcessing = false;
             Valuations = new ObservableCollection<Valuation>();
-            SaveToDocCommand = new Command(() => SaveToDoc());
+            SaveToDocCommand = new Command(() =>
+            {
+                Task.Run(() =>
+                {
+                    IsProcessing = true;
+                    SaveToDoc();
+                    IsProcessing = false;
+                });
+            });
             AddValuationCommand = new Command(() => AddValuation());
         }
 
         private void AddValuation()
         {
-            Valuations.Add(new Valuation("rwrwerw", "234", "2001", "2432", "sfsf", "fsfd"));
+            Valuations.Add(new Valuation());
         }
 
         public ICommand SaveToDocCommand { get; }
