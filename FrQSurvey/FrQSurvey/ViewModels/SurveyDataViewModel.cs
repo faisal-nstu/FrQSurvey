@@ -1,9 +1,12 @@
 ﻿using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
+using FrQSurvey.Models;
 using FrQSurvey.Services;
 using HtmlToOpenXml;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection;
 using System.Windows.Input;
@@ -13,6 +16,13 @@ namespace FrQSurvey.ViewModels
 {
     public class SurveyDataViewModel : BaseViewModel
     {
+        #region PROPS
+        private string id;
+        public string Id
+        {
+            get => id;
+            set => SetProperty(ref id, value);
+        }
         private string valuationOfProperty;
         public string ValuationOfProperty
         {
@@ -239,14 +249,42 @@ namespace FrQSurvey.ViewModels
         public string TotalAreaOfLand
         {
             get => totalAreaOfLand;
-            set => SetProperty(ref totalAreaOfLand, value);
+            set
+            {
+                SetProperty(ref totalAreaOfLand, value);
+                SetPresentValueOfLand();
+            }
         }
         private string presentRateOfLand;
         public string PresentRateOfLand
         {
             get => presentRateOfLand;
-            set => SetProperty(ref presentRateOfLand, value);
+            set
+            {
+                SetProperty(ref presentRateOfLand, value);
+                SetPresentValueOfLand();
+            }
         }
+
+        private void SetPresentValueOfLand()
+        {
+            if (totalAreaOfLand != null && presentRateOfLand != null)
+            {
+                decimal area;
+                if (!decimal.TryParse(totalAreaOfLand, out area))
+                {
+                    area = 0;
+                }
+                decimal rate;
+                if (!decimal.TryParse(presentRateOfLand, out rate))
+                {
+                    rate = 0;
+                }
+
+                PresentValueOfLand = (area * rate).ToString();
+            }
+        }
+
         private string presentValueOfLand;
         public string PresentValueOfLand
         {
@@ -301,28 +339,37 @@ namespace FrQSurvey.ViewModels
             get => window;
             set => SetProperty(ref window, value);
         }
+        #endregion
 
-        private string text;
-        public string Text
+        private ObservableCollection<Valuation> valuations;
+        public ObservableCollection<Valuation> Valuations
         {
-            get => text;
-            set => SetProperty(ref text, value);
+            get => valuations;
+            set => SetProperty(ref valuations, value);
         }
 
         public SurveyDataViewModel()
         {
-            Title = "Survey Data";
+            Valuations = new ObservableCollection<Valuation>();
             SaveToDocCommand = new Command(() => SaveToDoc());
+            AddValuationCommand = new Command(() => AddValuation());
+        }
+
+        private void AddValuation()
+        {
+            Valuations.Add(new Valuation("rwrwerw", "234", "2001", "2432", "sfsf", "fsfd"));
         }
 
         public ICommand SaveToDocCommand { get; }
+        public ICommand AddValuationCommand { get; }
 
         private void SaveToDoc()
         {
-            string html = GetHtml();
+            string html = GetTemplate("Document.html");
 
             var replacables = new Dictionary<string, string>
             {
+                { "Id", Id },
                 { "ValuationOfProperty", ValuationOfProperty },
                 { "PresentUsageOfLand", PresentUsageOfLand },
                 { "ApproachRoad", ApproachRoad },
@@ -376,8 +423,17 @@ namespace FrQSurvey.ViewModels
             foreach (KeyValuePair<string, string> replacable in replacables)
             {
                 html = html.Replace($"*|{replacable.Key}|*", replacable.Value);
-                System.Console.WriteLine("Key: " + replacable.Key + " :::: Value: " + replacable.Value);
+                Console.WriteLine("Key: " + replacable.Key + " :::: Value: " + replacable.Value);
             }
+
+            var valuationRows = "";
+            foreach (var valuation in Valuations)
+            {
+                var valuationRow = GetTemplate("ValuationRow.html");
+                valuationRow = valuationRow.Replace($"*|Floor|*", valuation.Floor);
+                valuationRows += valuationRow;
+            }
+            html = html.Replace("*|ValuationRows|*", valuationRows);
 
 
             using (MemoryStream generatedDocument = new MemoryStream())
@@ -401,12 +457,12 @@ namespace FrQSurvey.ViewModels
             }
         }
 
-        private string GetHtml()
+        private string GetTemplate(string templateName)
         {
-            string docFileName = "template.html";
+            string docFileName = templateName;
 
             var assembly = typeof(SurveyDataViewModel).GetTypeInfo().Assembly;
-            Stream stream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.ViewModels.{docFileName}");
+            Stream stream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.Templates.{docFileName}");
             string docContent = null;
             using (var reader = new StreamReader(stream))
             {
