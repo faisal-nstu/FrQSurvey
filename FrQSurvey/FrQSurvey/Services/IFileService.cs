@@ -4,6 +4,6 @@ namespace FrQSurvey.Services
 {
     public interface IFileService
     {
-        void SaveAndView(string fileName, MemoryStream stream);
+        void SaveAndView(string fileName, string folderName, MemoryStream stream);
     }
 }

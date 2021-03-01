@@ -7,6 +7,7 @@ namespace FrQSurvey.Models
 {
     public class Valuation : INotifyPropertyChanged
     {
+        const double DEPRECIATION_RATE = 1.25;
         private string floor;
         public string Floor
         {
@@ -14,88 +15,81 @@ namespace FrQSurvey.Models
             set => SetProperty(ref floor, value);
         }
 
-        private string area;
-        public string Area
+        private double? area;
+        public double? Area
         {
             get => area;
             set => SetProperty(ref area, value);
         }
 
-        private string constructionYear;
-        public string COnstructionYear
+        private int? constructionYear;
+        public int? ConstructionYear
         {
             get => constructionYear;
             set => SetProperty(ref constructionYear, value);
         }
 
-        private string completed;
-        public string Completed
+        private double? completed;
+        public double? Completed
         {
             get => completed;
             set => SetProperty(ref completed, value);
         }
 
-        private string completeRate;
-        public string CompleteRate
+        private double? completeRate;
+        public double? CompleteRate
         {
             get => completeRate;
             set => SetProperty(ref completeRate, value);
         }
 
-        private string totalWhenCompleted;
-        public string TotalWhenCompleted
+        private double? totalWhenCompleted;
+        public double? TotalWhenCompleted
         {
             get => totalWhenCompleted;
             set => SetProperty(ref totalWhenCompleted, value);
         }
 
-        private string presentRate;
-        public string PresentRate
+        private double? presentRate;
+        public double? PresentRate
         {
             get => presentRate;
             set => SetProperty(ref presentRate, value);
         }
 
-        private string totalPresentValue;
-        public string TotalPresentValue
+        private double? totalPresentValue;
+        public double? TotalPresentValue
         {
             get => totalPresentValue;
             set => SetProperty(ref totalPresentValue, value);
         }
 
-        private string depereciation;
-        public string Depreciation
+        private double? depereciation;
+        public double? Depreciation
         {
             get => depereciation;
             set => SetProperty(ref depereciation, value);
         }
 
-        private string afterDepreciation;
-        public string AfterDepreciation
+        private double? afterDepreciation;
+        public double? AfterDepreciation
         {
             get => afterDepreciation;
             set => SetProperty(ref afterDepreciation, value);
         }
 
-        public Valuation()
+        public void Calculate()
         {
-            Floor = "";
-            Area = "";
-            COnstructionYear = "";
-            Completed = "";
-            CompleteRate = "";
-            PresentRate = "";
-        }
-        public Valuation(string floor, string area, string constructionYear, string completed, string completeRate, string presentRate)
-        {
-            Floor = floor;
-            Area = area;
-            COnstructionYear = constructionYear;
-            Completed = completed;
-            CompleteRate = completeRate;
-            PresentRate = presentRate;
+            TotalWhenCompleted = Area * CompleteRate;
+            PresentRate = (Completed * CompleteRate) / 100;
+            TotalPresentValue = PresentRate * Area;
+            Depreciation = ConstructionYear != 0
+                ? (DateTime.Now.Year - ConstructionYear) * DEPRECIATION_RATE
+                : 0;
+            AfterDepreciation = (TotalPresentValue * (100 - Depreciation)) / 100;
         }
 
+        #region INotifyPropertyChanged
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName] string propertyName = "",
             Action onChanged = null)
@@ -109,7 +103,6 @@ namespace FrQSurvey.Models
             return true;
         }
 
-        #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {

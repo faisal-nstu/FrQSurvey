@@ -37,200 +37,200 @@
                 <Label Text="ID"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding Id, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Valuation of Property"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding ValuationOfProperty, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Present usage of land"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding PresentUsageOfLand, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Approach Road"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding ApproachRoad, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Nature of road"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding NatureOfRoad, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Building Face"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding BuildingFace, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Boundary Wall"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding BoundaryWall, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Ownership of road"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding OwnershipOfRoad, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Deed No and Date"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding DeedNoAndDate, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="J L No"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding JLNo, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Khatian No"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding KhatianNo, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Dag No"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding DagNo, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Mutation Khatian No"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding MutationKhatianNo, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Mouza"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding Mouza, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="PS"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding PS, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="SRO"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding SRO, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="District"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding District, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Area of land as per deed"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding AreaOfLandAsPerDeed, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Location of the land"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding LocationOfTheLand, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Local Authority"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding LocalAuthority, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Importance"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding Importance, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="On the North"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding OnTheNorth, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="On the South"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding OnTheSouth, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="On the East"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding OnTheEast, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="On the West"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding OnTheWest, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Nearest Important Place 1 name"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding NearestImportantPlace1Name, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Nearest Important Place 1 value"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding NearestImportantPlace1Value, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Nearest Important Place 2 name"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding NearestImportantPlace2Name, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Nearest Important Place 2 value"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding NearestImportantPlace2Value, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Nearest Important Place 3 name"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding NearestImportantPlace3Name, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Nearest Important Place 3 value"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding NearestImportantPlace3Value, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Water Supply"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding WaterSupply, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Gas Supply"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding GasSupply, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Electricity Supply"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding ElectricitySupply, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Communication Road to"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding CommunicationRoadTo, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Communication Road to distance"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding CommunicationRoadToDistance, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Communication Road from"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding CommunicationRoadFrom, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Communication Road from distance"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding CommunicationRoadFromDistance, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Total area of land "
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding TotalAreaOfLand, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Present rate of Land"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding PresentRateOfLand, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Present Value of Land"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding PresentValueOfLand, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}"
+                       Style="{StaticResource EntryStyle}" ReturnType="Next"
                        IsReadOnly="True" />
                 <Label Text="Description"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding Description, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Floor Identification "
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding FloorIdentification, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Plan"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding Plan, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Physical "
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding Physical, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Floor "
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding Floor, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Roof "
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding Roof, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Door "
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding Door, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                 <Label Text="Window"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding Window, Mode=TwoWay}"
-                       Style="{StaticResource EntryStyle}" />
+                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
 
 
                 <Label Text="Valuation of Building based on cost approach"
@@ -245,13 +245,73 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                
+                                <!-- Floor -->
                                 <Label Text="Floor"
                                        Grid.Column="0"
+                                       Grid.Row="0"
                                        VerticalOptions="Center"
                                        Style="{StaticResource LabelStyle}" />
                                 <Entry Text="{Binding Floor, Mode=TwoWay}"
                                        Grid.Column="1"
-                                       Style="{StaticResource EntryStyle}" />
+                                       Grid.Row="0"
+                                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
+
+                                <!-- Area -->
+                                <Label Text="Area"
+                                       Grid.Column="0"
+                                       Grid.Row="1"
+                                       VerticalOptions="Center"
+                                       Style="{StaticResource LabelStyle}" />
+                                <Entry Text="{Binding Area, Mode=TwoWay}"
+                                       Grid.Column="1"
+                                       Grid.Row="1"
+                                       Keyboard="Numeric"
+                                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
+
+                                <!-- Construction Year -->
+                                <Label Text="Const. Year."
+                                       Grid.Column="0"
+                                       Grid.Row="2"
+                                       VerticalOptions="Center"
+                                       Style="{StaticResource LabelStyle}" />
+                                <Entry Text="{Binding ConstructionYear, Mode=TwoWay}"
+                                       Grid.Column="1"
+                                       Grid.Row="2"
+                                       Keyboard="Numeric"
+                                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
+
+                                <!-- Completed % -->
+                                <Label Text="Completed (%)"
+                                       Grid.Column="0"
+                                       Grid.Row="3"
+                                       VerticalOptions="Center"
+                                       Style="{StaticResource LabelStyle}" />
+                                <Entry Text="{Binding Completed, Mode=TwoWay}"
+                                       Grid.Column="1"
+                                       Grid.Row="3"
+                                       Keyboard="Numeric"
+                                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
+
+                                <!-- Complete Rate -->
+                                <Label Text="Complete Rate / sft."
+                                       Grid.Column="0"
+                                       Grid.Row="4"
+                                       VerticalOptions="Center"
+                                       Style="{StaticResource LabelStyle}" />
+                                <Entry Text="{Binding CompleteRate, Mode=TwoWay}"
+                                       Grid.Column="1"
+                                       Grid.Row="4"
+                                       Keyboard="Numeric"
+                                       Style="{StaticResource EntryStyle}" ReturnType="Next" />
                             </Grid>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
@@ -278,7 +338,7 @@
         </ScrollView>
 
         <Grid BackgroundColor="#BB000000"
-              IsVisible="{Binding IsProcessing, Mode=TwoWay}">
+              IsVisible="{Binding IsBusy, Mode=TwoWay}">
             <ActivityIndicator IsRunning="True"
                                Color="White"
                                VerticalOptions="Center"

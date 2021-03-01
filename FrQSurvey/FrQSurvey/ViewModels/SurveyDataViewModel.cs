@@ -349,24 +349,16 @@ namespace FrQSurvey.ViewModels
             set => SetProperty(ref valuations, value);
         }
 
-        private bool isProcessing;
-        public bool IsProcessing
-        {
-            get => isProcessing;
-            set => SetProperty(ref isProcessing, value);
-        }
-
         public SurveyDataViewModel()
         {
-            IsProcessing = false;
             Valuations = new ObservableCollection<Valuation>();
-            SaveToDocCommand = new Command(() =>
+            SaveToDocCommand = new Command(async () =>
             {
-                Task.Run(() =>
+                await Task.Run(async () =>
                 {
-                    IsProcessing = true;
+                    IsBusy = true;
                     SaveToDoc();
-                    IsProcessing = false;
+                    IsBusy = false;
                 });
             });
             AddValuationCommand = new Command(() => AddValuation());
@@ -382,11 +374,21 @@ namespace FrQSurvey.ViewModels
 
         private void SaveToDoc()
         {
+            if (string.IsNullOrEmpty(Id))
+            {
+                ShowError("Id cannot be empty");
+                return;
+            }
+
+            var currentDate = DateTime.Now;
+            var year = currentDate.Year.ToString();
             string html = GetTemplate("Document.html");
 
             var replacables = new Dictionary<string, string>
             {
                 { "Id", Id },
+                { "Year",  year },
+                { "Date", currentDate.ToString("MMMM dd, yyyy") },
                 { "ValuationOfProperty", ValuationOfProperty },
                 { "PresentUsageOfLand", PresentUsageOfLand },
                 { "ApproachRoad", ApproachRoad },
@@ -440,18 +442,45 @@ namespace FrQSurvey.ViewModels
             foreach (KeyValuePair<string, string> replacable in replacables)
             {
                 html = html.Replace($"*|{replacable.Key}|*", replacable.Value);
-                Console.WriteLine("Key: " + replacable.Key + " :::: Value: " + replacable.Value);
+                // Console.WriteLine("Key: " + replacable.Key + " :::: Value: " + replacable.Value);
             }
 
             var valuationRows = "";
+            double? totalAfterCompletion = 0;
+            double? totalAtPresent = 0;
             foreach (var valuation in Valuations)
             {
+                try
+                {
+                    valuation.Calculate();
+                }
+                catch (Exception ex)
+                {
+                    ShowError("Calculation failed. Maked sure you have entered valid numbers.");
+                }
+
+                totalAfterCompletion += valuation.TotalWhenCompleted;
+                totalAtPresent += valuation.AfterDepreciation;
+
                 var valuationRow = GetTemplate("ValuationRow.html");
                 valuationRow = valuationRow.Replace($"*|Floor|*", valuation.Floor);
+                valuationRow = valuationRow.Replace($"*|Area|*", valuation.Area.ToString());
+                valuationRow = valuationRow.Replace($"*|ConstructionYear|*", valuation.ConstructionYear.ToString());
+                valuationRow = valuationRow.Replace($"*|Completed|*", valuation.Completed.ToString());
+                valuationRow = valuationRow.Replace($"*|CompleteRate|*", valuation.CompleteRate.ToString());
+                valuationRow = valuationRow.Replace($"*|TotalWhenCompleted|*", valuation.TotalWhenCompleted.ToString());
+                valuationRow = valuationRow.Replace($"*|PresentRate|*", valuation.PresentRate.ToString());
+                valuationRow = valuationRow.Replace($"*|TotalPresentValue|*", valuation.TotalPresentValue.ToString());
+                valuationRow = valuationRow.Replace($"*|Depreciation|*", valuation.Depreciation.ToString());
+                valuationRow = valuationRow.Replace($"*|AfterDepreciation|*", valuation.AfterDepreciation.ToString());
                 valuationRows += valuationRow;
             }
             html = html.Replace("*|ValuationRows|*", valuationRows);
+            html = html.Replace("*|TotalAfterCompletion|*", totalAfterCompletion.ToString());
+            html = html.Replace("*|TotalAtPresent|*", totalAtPresent.ToString());
 
+            var folderName = "AAAFrQSurvey";
+            var fileName = $"VR-{id}, {year}.docx";
 
             using (MemoryStream generatedDocument = new MemoryStream())
             {
@@ -470,8 +499,15 @@ namespace FrQSurvey.ViewModels
                     mainPart.Document.Save();
                 }
                 // save to file
-                DependencyService.Get<IFileService>().SaveAndView("SurveyDoc.docx", generatedDocument);
+                DependencyService.Get<IFileService>().SaveAndView(fileName, folderName, generatedDocument);
             }
+
+            MessagingCenter.Send(this, "SUCCESS", $"Document \"{fileName}\" saved in \"{folderName}\"");
+        }
+
+        private void ShowError(string message)
+        {
+            MessagingCenter.Send(this, "ERROR", message);
         }
 
         private string GetTemplate(string templateName)

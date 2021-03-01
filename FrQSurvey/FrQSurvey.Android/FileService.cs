@@ -12,7 +12,7 @@ namespace FrQSurvey.Droid
     public class FileService : IFileService
     {
 
-        public void SaveAndView(string fileName, MemoryStream stream)
+        public void SaveAndView(string fileName, string folderName, MemoryStream stream)
         {
             try
             {
