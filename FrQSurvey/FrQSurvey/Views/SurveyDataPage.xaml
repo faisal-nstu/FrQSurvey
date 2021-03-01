@@ -38,6 +38,91 @@
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding Id, Mode=TwoWay}"
                        Style="{StaticResource EntryStyle}" ReturnType="Next" />
+
+
+
+
+
+
+                <Label Text="Initiator Name"
+                       Style="{StaticResource LabelStyle}" />
+                <Entry Text="{Binding InitiatorName, Mode=TwoWay}"
+                       Style="{StaticResource EntryStyle}"
+                       ReturnType="Next" />
+                <Label Text="Initiator Address"
+                       Style="{StaticResource LabelStyle}" />
+                <Entry Text="{Binding InitiatorAddress, Mode=TwoWay}"
+                       Style="{StaticResource EntryStyle}"
+                       ReturnType="Next" />
+                <Label Text="Reference"
+                       Style="{StaticResource LabelStyle}" />
+                <Entry Text="{Binding Reference, Mode=TwoWay}"
+                       Style="{StaticResource EntryStyle}"
+                       ReturnType="Next" />
+                <Label Text="Date of Intimation"
+                       Style="{StaticResource LabelStyle}" />
+                <Entry Text="{Binding DateOfInitiation, Mode=TwoWay}"
+                       Style="{StaticResource EntryStyle}"
+                       ReturnType="Next" />
+                <Label Text="Date of Survey"
+                       Style="{StaticResource LabelStyle}" />
+                <Entry Text="{Binding DateOfSurvey, Mode=TwoWay}"
+                       Style="{StaticResource EntryStyle}"
+                       ReturnType="Next" />
+                <Label Text="Place of Survey"
+                       Style="{StaticResource LabelStyle}" />
+                <Entry Text="{Binding PlaceOfSurvey, Mode=TwoWay}"
+                       Style="{StaticResource EntryStyle}"
+                       ReturnType="Next" />
+                <Label Text="Name of Borrower"
+                       Style="{StaticResource LabelStyle}" />
+                <Entry Text="{Binding NameOfBorrower, Mode=TwoWay}"
+                       Style="{StaticResource EntryStyle}"
+                       ReturnType="Next" />
+                <Label Text="Borrower Address"
+                       Style="{StaticResource LabelStyle}" />
+                <Entry Text="{Binding BorrowerAddress, Mode=TwoWay}"
+                       Style="{StaticResource EntryStyle}"
+                       ReturnType="Next" />
+                <Label Text="Name of Owner"
+                       Style="{StaticResource LabelStyle}" />
+                <Entry Text="{Binding NameOfOwner, Mode=TwoWay}"
+                       Style="{StaticResource EntryStyle}"
+                       ReturnType="Next" />
+                <Label Text="Present Address"
+                       Style="{StaticResource LabelStyle}" />
+                <Entry Text="{Binding PresentAddress, Mode=TwoWay}"
+                       Style="{StaticResource EntryStyle}"
+                       ReturnType="Next" />
+                <Label Text="Permanent Address"
+                       Style="{StaticResource LabelStyle}" />
+                <Entry Text="{Binding PermanentAddress, Mode=TwoWay}"
+                       Style="{StaticResource EntryStyle}"
+                       ReturnType="Next" />
+                <Label Text="Relationship with Borrower"
+                       Style="{StaticResource LabelStyle}" />
+                <Entry Text="{Binding RelationshipWithBorrower, Mode=TwoWay}"
+                       Style="{StaticResource EntryStyle}"
+                       ReturnType="Next" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <Label Text="Valuation of Property"
                        Style="{StaticResource LabelStyle}" />
                 <Entry Text="{Binding ValuationOfProperty, Mode=TwoWay}"

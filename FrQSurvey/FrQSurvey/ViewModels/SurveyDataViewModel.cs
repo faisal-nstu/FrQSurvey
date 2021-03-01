@@ -24,6 +24,98 @@ namespace FrQSurvey.ViewModels
             get => id;
             set => SetProperty(ref id, value);
         }
+
+
+
+
+
+        private string initiatorName;
+        public string InitiatorName
+        {
+            get => initiatorName;
+            set => SetProperty(ref initiatorName, value);
+        }
+        private string initiatorAddress;
+        public string InitiatorAddress
+        {
+            get => initiatorAddress;
+            set => SetProperty(ref initiatorAddress, value);
+        }
+        private string reference;
+        public string Reference
+        {
+            get => reference;
+            set => SetProperty(ref reference, value);
+        }
+        private string dateOfInitiation;
+        public string DateOfInitiation
+        {
+            get => dateOfInitiation;
+            set => SetProperty(ref dateOfInitiation, value);
+        }
+        private string dateOfSurvey;
+        public string DateOfSurvey
+        {
+            get => dateOfSurvey;
+            set => SetProperty(ref dateOfSurvey, value);
+        }
+        private string placeOfSurvey;
+        public string PlaceOfSurvey
+        {
+            get => placeOfSurvey;
+            set => SetProperty(ref placeOfSurvey, value);
+        }
+        private string nameOfBorrower;
+        public string NameOfBorrower
+        {
+            get => nameOfBorrower;
+            set => SetProperty(ref nameOfBorrower, value);
+        }
+        private string borrowerAddress;
+        public string BorrowerAddress
+        {
+            get => borrowerAddress;
+            set => SetProperty(ref borrowerAddress, value);
+        }
+        private string nameOfOwner;
+        public string NameOfOwner
+        {
+            get => nameOfOwner;
+            set => SetProperty(ref nameOfOwner, value);
+        }
+        private string presentAddress;
+        public string PresentAddress
+        {
+            get => presentAddress;
+            set => SetProperty(ref presentAddress, value);
+        }
+        private string permanentAddress;
+        public string PermanentAddress
+        {
+            get => permanentAddress;
+            set => SetProperty(ref permanentAddress, value);
+        }
+        private string relationshipWithBorrower;
+        public string RelationshipWithBorrower
+        {
+            get => relationshipWithBorrower;
+            set => SetProperty(ref relationshipWithBorrower, value);
+        }
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         private string valuationOfProperty;
         public string ValuationOfProperty
         {
@@ -387,6 +479,20 @@ namespace FrQSurvey.ViewModels
             var replacables = new Dictionary<string, string>
             {
                 { "Id", Id },
+
+                { "InitiatorName", InitiatorName },
+                { "InitiatorAddress", InitiatorAddress },
+                { "Reference", Reference },
+                { "DateOfInitiation", DateOfInitiation },
+                { "DateOfSurvey", DateOfSurvey },
+                { "PlaceOfSurvey", PlaceOfSurvey },
+                { "NameOfBorrower", NameOfBorrower },
+                { "BorrowerAddress", BorrowerAddress },
+                { "NameOfOwner", NameOfOwner },
+                { "PresentAddress", PresentAddress },
+                { "PermanentAddress", PermanentAddress },
+                { "RelationshipWithBorrower", RelationshipWithBorrower },
+
                 { "Year",  year },
                 { "Date", currentDate.ToString("MMMM dd, yyyy") },
                 { "ValuationOfProperty", ValuationOfProperty },
@@ -479,7 +585,7 @@ namespace FrQSurvey.ViewModels
             html = html.Replace("*|TotalAfterCompletion|*", totalAfterCompletion.ToString());
             html = html.Replace("*|TotalAtPresent|*", totalAtPresent.ToString());
 
-            var folderName = "AAAFrQSurvey";
+            var folderName = "FrQSurveyDocs";
             var fileName = $"VR-{id}, {year}.docx";
 
             using (MemoryStream generatedDocument = new MemoryStream())
