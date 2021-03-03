@@ -24,11 +24,6 @@ namespace FrQSurvey.ViewModels
             get => id;
             set => SetProperty(ref id, value);
         }
-
-
-
-
-
         private string initiatorName;
         public string InitiatorName
         {
@@ -101,21 +96,6 @@ namespace FrQSurvey.ViewModels
             get => relationshipWithBorrower;
             set => SetProperty(ref relationshipWithBorrower, value);
         }
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         private string valuationOfProperty;
         public string ValuationOfProperty
         {
