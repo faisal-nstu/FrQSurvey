@@ -40,7 +40,7 @@ namespace FrQSurvey.Droid
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("ERROR:::::::::::::::::::::: " + ex.Message);
+                System.Console.WriteLine("ERROR: " + ex.Message);
             }
         }
     }

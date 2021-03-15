@@ -1,0 +1,222 @@
+﻿<w:tr w:rsidR="008C4EC7" w:rsidRPr="008C4EC7" w:rsidTr="0097640A">
+        <w:trPr>
+          <w:trHeight w:val="667"/>
+        </w:trPr>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:w="0" w:type="auto"/>
+          </w:tcPr>
+          <w:p w:rsidR="008C4EC7" w:rsidRPr="008C4EC7" w:rsidRDefault="008C4EC7" w:rsidP="008C4EC7">
+            <w:pPr>
+              <w:ind w:left="720" w:hanging="720"/>
+              <w:jc w:val="center"/>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:sz w:val="16"/>
+              </w:rPr>
+            </w:pPr>
+            <w:r w:rsidRPr="008C4EC7">
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:sz w:val="16"/>
+              </w:rPr>
+              <w:t>*|Floor|*</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:w="0" w:type="auto"/>
+          </w:tcPr>
+          <w:p w:rsidR="008C4EC7" w:rsidRPr="008C4EC7" w:rsidRDefault="008C4EC7">
+            <w:pPr>
+              <w:jc w:val="center"/>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:sz w:val="16"/>
+              </w:rPr>
+            </w:pPr>
+            <w:r w:rsidRPr="008C4EC7">
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:sz w:val="16"/>
+              </w:rPr>
+              <w:t>*|Area|*</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:w="0" w:type="auto"/>
+          </w:tcPr>
+          <w:p w:rsidR="008C4EC7" w:rsidRPr="008C4EC7" w:rsidRDefault="008C4EC7">
+            <w:pPr>
+              <w:ind w:right="-93"/>
+              <w:jc w:val="center"/>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:sz w:val="16"/>
+              </w:rPr>
+            </w:pPr>
+            <w:r w:rsidRPr="008C4EC7">
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:sz w:val="16"/>
+              </w:rPr>
+              <w:t>*|ConstructionYear|*</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:w="0" w:type="auto"/>
+          </w:tcPr>
+          <w:p w:rsidR="008C4EC7" w:rsidRPr="008C4EC7" w:rsidRDefault="008C4EC7">
+            <w:pPr>
+              <w:ind w:right="-80"/>
+              <w:jc w:val="center"/>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:sz w:val="16"/>
+              </w:rPr>
+            </w:pPr>
+            <w:r w:rsidRPr="008C4EC7">
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:sz w:val="16"/>
+              </w:rPr>
+              <w:t>*|Completed|*</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:w="0" w:type="auto"/>
+          </w:tcPr>
+          <w:p w:rsidR="008C4EC7" w:rsidRPr="008C4EC7" w:rsidRDefault="008C4EC7">
+            <w:pPr>
+              <w:ind w:right="-75"/>
+              <w:jc w:val="center"/>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:sz w:val="16"/>
+              </w:rPr>
+            </w:pPr>
+            <w:r w:rsidRPr="008C4EC7">
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:sz w:val="16"/>
+              </w:rPr>
+              <w:t>*|CompleteRate|*</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:w="0" w:type="auto"/>
+          </w:tcPr>
+          <w:p w:rsidR="008C4EC7" w:rsidRPr="008C4EC7" w:rsidRDefault="008C4EC7">
+            <w:pPr>
+              <w:ind w:right="-56"/>
+              <w:jc w:val="center"/>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:sz w:val="16"/>
+              </w:rPr>
+            </w:pPr>
+            <w:r w:rsidRPr="008C4EC7">
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:sz w:val="16"/>
+              </w:rPr>
+              <w:t>*|TotalWhenCompleted|*</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:w="0" w:type="auto"/>
+          </w:tcPr>
+          <w:p w:rsidR="008C4EC7" w:rsidRPr="008C4EC7" w:rsidRDefault="008C4EC7">
+            <w:pPr>
+              <w:ind w:right="-50"/>
+              <w:jc w:val="center"/>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:sz w:val="16"/>
+              </w:rPr>
+            </w:pPr>
+            <w:r w:rsidRPr="008C4EC7">
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:sz w:val="16"/>
+              </w:rPr>
+              <w:t>*|PresentRate|*</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:w="0" w:type="auto"/>
+          </w:tcPr>
+          <w:p w:rsidR="008C4EC7" w:rsidRPr="008C4EC7" w:rsidRDefault="008C4EC7">
+            <w:pPr>
+              <w:jc w:val="center"/>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:sz w:val="16"/>
+              </w:rPr>
+            </w:pPr>
+            <w:r w:rsidRPr="008C4EC7">
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:sz w:val="16"/>
+              </w:rPr>
+              <w:t>*|TotalPresentValue|*</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:w="0" w:type="auto"/>
+          </w:tcPr>
+          <w:p w:rsidR="008C4EC7" w:rsidRPr="008C4EC7" w:rsidRDefault="008C4EC7">
+            <w:pPr>
+              <w:ind w:right="-157"/>
+              <w:jc w:val="center"/>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:sz w:val="16"/>
+              </w:rPr>
+            </w:pPr>
+            <w:r w:rsidRPr="008C4EC7">
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:sz w:val="16"/>
+              </w:rPr>
+              <w:t>*|Depreciation|*</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+        <w:tc>
+          <w:tcPr>
+            <w:tcW w:w="1823" w:type="dxa"/>
+          </w:tcPr>
+          <w:p w:rsidR="008C4EC7" w:rsidRPr="008C4EC7" w:rsidRDefault="008C4EC7">
+            <w:pPr>
+              <w:jc w:val="center"/>
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:sz w:val="16"/>
+              </w:rPr>
+            </w:pPr>
+            <w:r w:rsidRPr="008C4EC7">
+              <w:rPr>
+                <w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>
+                <w:sz w:val="16"/>
+              </w:rPr>
+              <w:t>*|AfterDepreciation|*</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+      </w:tr>

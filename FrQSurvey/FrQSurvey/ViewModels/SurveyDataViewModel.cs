@@ -8,9 +8,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.IO.Compression;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace FrQSurvey.ViewModels
@@ -24,10 +27,6 @@ namespace FrQSurvey.ViewModels
             get => id;
             set => SetProperty(ref id, value);
         }
-
-
-
-
 
         private string initiatorName;
         public string InitiatorName
@@ -102,20 +101,6 @@ namespace FrQSurvey.ViewModels
             set => SetProperty(ref relationshipWithBorrower, value);
         }
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         private string valuationOfProperty;
         public string ValuationOfProperty
         {
@@ -359,25 +344,6 @@ namespace FrQSurvey.ViewModels
             }
         }
 
-        private void SetPresentValueOfLand()
-        {
-            if (totalAreaOfLand != null && presentRateOfLand != null)
-            {
-                decimal area;
-                if (!decimal.TryParse(totalAreaOfLand, out area))
-                {
-                    area = 0;
-                }
-                decimal rate;
-                if (!decimal.TryParse(presentRateOfLand, out rate))
-                {
-                    rate = 0;
-                }
-
-                PresentValueOfLand = (area * rate).ToString();
-            }
-        }
-
         private string presentValueOfLand;
         public string PresentValueOfLand
         {
@@ -432,24 +398,42 @@ namespace FrQSurvey.ViewModels
             get => window;
             set => SetProperty(ref window, value);
         }
-        #endregion
-
         private ObservableCollection<Valuation> valuations;
         public ObservableCollection<Valuation> Valuations
         {
             get => valuations;
             set => SetProperty(ref valuations, value);
         }
+        #endregion
+        
+        private void SetPresentValueOfLand()
+        {
+            if (totalAreaOfLand != null && presentRateOfLand != null)
+            {
+                if (!decimal.TryParse(totalAreaOfLand, out decimal area))
+                {
+                    area = 0;
+                }
+
+                if (!decimal.TryParse(presentRateOfLand, out decimal rate))
+                {
+                    rate = 0;
+                }
+
+                PresentValueOfLand = (area * rate).ToString();
+            }
+        }
 
         public SurveyDataViewModel()
         {
             Valuations = new ObservableCollection<Valuation>();
+            
             SaveToDocCommand = new Command(async () =>
             {
                 await Task.Run(async () =>
                 {
                     IsBusy = true;
-                    SaveToDoc();
+                    await SaveToDoc();
                     IsBusy = false;
                 });
             });
@@ -464,8 +448,35 @@ namespace FrQSurvey.ViewModels
         public ICommand SaveToDocCommand { get; }
         public ICommand AddValuationCommand { get; }
 
-        private void SaveToDoc()
+        private void ShowError(string message)
         {
+            MessagingCenter.Send(this, "ERROR", message);
+        }
+
+        private string GetTemplate(string templateName)
+        {
+            var assembly = typeof(SurveyDataViewModel).GetTypeInfo().Assembly;
+            Stream stream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.Templates.{templateName}");
+            string docContent = null;
+            using (var reader = new StreamReader(stream))
+            {
+                docContent = reader.ReadToEnd();
+            }
+
+            return docContent;
+        }
+
+        private async Task SaveToDoc()
+        {
+            var status = await Permissions.CheckStatusAsync<Permissions.StorageWrite>();
+
+            if (status != PermissionStatus.Granted)
+            {
+                ShowError("Plese grant \"Storage\" permission to use the app.");
+                return;
+            }
+
+
             if (string.IsNullOrEmpty(Id))
             {
                 ShowError("Id cannot be empty");
@@ -474,12 +485,57 @@ namespace FrQSurvey.ViewModels
 
             var currentDate = DateTime.Now;
             var year = currentDate.Year.ToString();
-            string html = GetTemplate("Document.html");
+            
+            var folderName = "FrQSurveyDocs";
+            var fileName = $"VR-{id}, {year}.docx";
 
+            using (var generatedDocument = new MemoryStream())
+            {
+                using (var archive = new ZipArchive(generatedDocument, ZipArchiveMode.Create, true))
+                {
+                    var assembly = typeof(SurveyDataViewModel).GetTypeInfo().Assembly;
+                    Stream stream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.Templates.Document.docx");
+
+                    using (ZipArchive docFile = new ZipArchive(stream))
+                    {
+                        foreach (var file in docFile.Entries)
+                        {
+                            string documentContent;
+                            using (var reader = new StreamReader(file.Open()))
+                            {
+                                documentContent = reader.ReadToEnd();
+                            }
+
+                            if(file.Name == "document.xml")
+                            {
+                                documentContent = UpdateValues(documentContent, currentDate, year);
+                            }
+
+                            var demoFile = archive.CreateEntry(file.FullName);
+
+                            using (var entryStream = demoFile.Open())
+                            {
+                                using (var streamWriter = new StreamWriter(entryStream))
+                                {
+                                    streamWriter.Write(documentContent);
+                                }
+                            }
+
+                        }
+                    }
+
+                }
+
+                // save to file
+                DependencyService.Get<IFileService>().SaveAndView(fileName, folderName, generatedDocument);
+            }
+        }
+
+        private string UpdateValues(string docContent, DateTime date, string year)
+        {
             var replacables = new Dictionary<string, string>
             {
                 { "Id", Id },
-
                 { "InitiatorName", InitiatorName },
                 { "InitiatorAddress", InitiatorAddress },
                 { "Reference", Reference },
@@ -492,9 +548,8 @@ namespace FrQSurvey.ViewModels
                 { "PresentAddress", PresentAddress },
                 { "PermanentAddress", PermanentAddress },
                 { "RelationshipWithBorrower", RelationshipWithBorrower },
-
                 { "Year",  year },
-                { "Date", currentDate.ToString("MMMM dd, yyyy") },
+                { "Date", date.ToString("MMMM dd, yyyy") },
                 { "ValuationOfProperty", ValuationOfProperty },
                 { "PresentUsageOfLand", PresentUsageOfLand },
                 { "ApproachRoad", ApproachRoad },
@@ -547,8 +602,7 @@ namespace FrQSurvey.ViewModels
 
             foreach (KeyValuePair<string, string> replacable in replacables)
             {
-                html = html.Replace($"*|{replacable.Key}|*", replacable.Value);
-                // Console.WriteLine("Key: " + replacable.Key + " :::: Value: " + replacable.Value);
+                docContent = docContent.Replace($"*|{replacable.Key}|*", replacable.Value);
             }
 
             var valuationRows = "";
@@ -562,13 +616,14 @@ namespace FrQSurvey.ViewModels
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine("ERROR: " + ex.Message);
                     ShowError("Calculation failed. Maked sure you have entered valid numbers.");
                 }
 
                 totalAfterCompletion += valuation.TotalWhenCompleted;
                 totalAtPresent += valuation.AfterDepreciation;
 
-                var valuationRow = GetTemplate("ValuationRow.html");
+                var valuationRow = GetTemplate("ValuationRow.xml");
                 valuationRow = valuationRow.Replace($"*|Floor|*", valuation.Floor);
                 valuationRow = valuationRow.Replace($"*|Area|*", valuation.Area.ToString());
                 valuationRow = valuationRow.Replace($"*|ConstructionYear|*", valuation.ConstructionYear.ToString());
@@ -581,52 +636,16 @@ namespace FrQSurvey.ViewModels
                 valuationRow = valuationRow.Replace($"*|AfterDepreciation|*", valuation.AfterDepreciation.ToString());
                 valuationRows += valuationRow;
             }
-            html = html.Replace("*|ValuationRows|*", valuationRows);
-            html = html.Replace("*|TotalAfterCompletion|*", totalAfterCompletion.ToString());
-            html = html.Replace("*|TotalAtPresent|*", totalAtPresent.ToString());
 
-            var folderName = "FrQSurveyDocs";
-            var fileName = $"VR-{id}, {year}.docx";
+            docContent = docContent.Replace("*|ValuationRows|*", valuationRows);
+            docContent = docContent.Replace("*|TotalAfterCompletion|*", totalAfterCompletion.ToString());
+            docContent = docContent.Replace("*|TotalAtPresent|*", totalAtPresent.ToString());
 
-            using (MemoryStream generatedDocument = new MemoryStream())
-            {
-                using (WordprocessingDocument package = WordprocessingDocument.Create(generatedDocument, WordprocessingDocumentType.Document))
-                {
-                    MainDocumentPart mainPart = package.MainDocumentPart;
-                    if (mainPart == null)
-                    {
-                        mainPart = package.AddMainDocumentPart();
-                        new Document(new Body()).Save(mainPart);
-                    }
+            // sanitize '&' symbol
+            docContent = docContent.Replace("&amp;", "*|AND|*");
+            docContent = docContent.Replace("&", "*|AND|*");
+            docContent = docContent.Replace("*|AND|*", "&amp;");
 
-                    HtmlConverter converter = new HtmlConverter(mainPart);
-                    converter.ParseHtml(html);
-
-                    mainPart.Document.Save();
-                }
-                // save to file
-                DependencyService.Get<IFileService>().SaveAndView(fileName, folderName, generatedDocument);
-            }
-
-            MessagingCenter.Send(this, "SUCCESS", $"Document \"{fileName}\" saved in \"{folderName}\"");
-        }
-
-        private void ShowError(string message)
-        {
-            MessagingCenter.Send(this, "ERROR", message);
-        }
-
-        private string GetTemplate(string templateName)
-        {
-            string docFileName = templateName;
-
-            var assembly = typeof(SurveyDataViewModel).GetTypeInfo().Assembly;
-            Stream stream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.Templates.{docFileName}");
-            string docContent = null;
-            using (var reader = new StreamReader(stream))
-            {
-                docContent = reader.ReadToEnd();
-            }
 
             return docContent;
         }
